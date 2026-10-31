@@ -30,4 +30,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "Cloud"
 include(":app")
-include(":cloud-core")
+include(":core")

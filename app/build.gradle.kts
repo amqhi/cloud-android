@@ -67,7 +67,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":cloud-core"))
+    implementation(project(":core"))
     if(minimumSdkVersion >= 24) {
         implementation("androidx.core:core-ktx:1.19.0")
         implementation("androidx.appcompat:appcompat:1.7.1")
