@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  -->
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:ignore="spUsage">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/appBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/doneButton"
+                    style="@style/Theme.Cloud.IconButton.AppBar"
+                    android:layout_margin="8dp"
+                    android:text="@string/icon_check"
+                    android:visibility="gone" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/files_title"
+                    android:textSize="22sp" />
+
+                <TextView
+                    android:id="@+id/itemCountText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16sp"
+                    android:layout_marginStart="8dp"
+                    android:visibility="gone"
+                    android:paddingTop="4sp" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/syncProgressIndicator"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:fontFamily="@font/icons"
+                    android:gravity="center"
+                    android:text="@string/icon_sync"
+                    android:textSize="16sp"
+                    android:visibility="gone"
+                    android:layout_margin="4dp"/>
+
+                <Button
+                    android:id="@+id/reconnectButton"
+                    style="@style/Theme.Cloud.IconButton.AppBar"
+                    android:text="@string/icon_globe_off"
+                    android:visibility="gone"/>
+
+                <Button
+                    android:id="@+id/searchButton"
+                    style="@style/Theme.Cloud.IconButton.AppBar"
+                    android:text="@string/icon_magnifying_glass" />
+
+                <Button
+                    android:id="@+id/moveButton"
+                    style="@style/Theme.Cloud.IconButton.AppBar"
+                    android:text="@string/icon_move"
+                    android:visibility="gone" />
+
+                <Button
+                    android:id="@+id/gridButton"
+                    style="@style/Theme.Cloud.IconButton.AppBar"
+                    android:contentDescription="@string/file_options"
+                    android:text="@string/icon_grid" />
+
+                <Button
+                    android:id="@+id/selectionMenuButton"
+                    style="@style/Theme.Cloud.IconButton.AppBar"
+                    android:contentDescription="@string/selection_options"
+                    android:text="@string/icon_ellipsis_vertical"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/searchBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_search"
+                android:hint="@string/search_hint"
+                android:imeOptions="actionSearch"
+                android:inputType="text"
+                android:maxLines="1"
+                android:paddingStart="12dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="8dp"
+                android:textSize="14sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/filesContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/floatingMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginVertical="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_gravity="bottom|start"
+        android:background="@drawable/bg_floating_button"
+        android:padding="4dp"
+        android:elevation="6dp">
+
+        <com.amqhi.cloud.AvatarView
+            android:id="@+id/accountButton"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginStart="12dp"
+            android:clickable="true"
+            android:contentDescription="@string/account_button"
+            android:focusable="true"
+            android:textSize="14dp" />
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?attr/dividerVertical"
+            android:layout_margin="4dp"/>
+
+        <Button
+            android:id="@+id/trashButton"
+            style="@style/Theme.Cloud.IconButton.FloatingMenu"
+            android:text="@string/icon_trash"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?attr/dividerVertical"
+            android:layout_margin="4dp"/>
+
+        <Button
+            android:id="@+id/settingsButton"
+            style="@style/Theme.Cloud.IconButton.FloatingMenu"
+            android:text="@string/icon_gear"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/folderFabRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="148dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/folderFabLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="@string/create_folder"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/folderFab"
+            style="@style/Theme.Cloud.Fab"
+            android:contentDescription="@string/create_folder"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/icon_folder" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fileFabRow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginBottom="74dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/fileFabLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="@string/create_file"
+            android:textSize="14sp" />
+
+        <Button
+            android:id="@+id/fileFab"
+            style="@style/Theme.Cloud.Fab"
+            android:contentDescription="@string/create_file"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginStart="10dp"
+            android:text="@string/icon_file" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/mainFab"
+        style="@style/Theme.Cloud.Fab"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:contentDescription="@string/add"
+        android:text="@string/icon_plus" />
+</FrameLayout>

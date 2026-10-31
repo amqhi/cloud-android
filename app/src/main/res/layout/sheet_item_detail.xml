@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/background"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_sheet"
+    android:orientation="vertical"
+    android:paddingHorizontal="8dp"
+    android:paddingBottom="24dp">
+
+    <include layout="@layout/view_sheet_handle" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/nameText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/createdAtLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Created"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/createdAtText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/updatedAtLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Updated"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/updated_at_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/eventAtLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Event"
+                android:visibility="gone"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/eventAtText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/deletedAtLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Deleted"
+                android:visibility="gone"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/deletedAtText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/commentLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Comments"
+                android:visibility="gone"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/commentText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <!-- TODO: remove visibility attribute once the E2EE feature is ready -->
+            <TextView
+                android:id="@+id/encryptedLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/e2ee"
+                android:layout_marginTop="6dp"
+                android:visibility="gone"/>
+
+            <!-- TODO: remove visibility attribute once the E2EE feature is ready -->
+            <TextView
+                android:id="@+id/encryptedText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/e2ee_not_encrypted"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/statusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/statusText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/appScopeLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="View in"
+                android:layout_marginTop="6dp"/>
+
+            <TextView
+                android:id="@+id/appScopeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>

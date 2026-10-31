@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="16dp"
+    android:paddingBottom="16dp">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/fileIcon"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:contentDescription="@null" />
+
+        <ImageView
+            android:id="@+id/folderIconFront"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_folder_front"
+            android:visibility="gone"/>
+
+        <CheckBox
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|start"
+            android:clickable="false"
+            android:focusable="false"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="8dp"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:minWidth="18dp"
+            android:minHeight="18dp"
+            android:maxWidth="18dp"
+            android:maxHeight="18dp"
+            android:max="1000"
+            android:progressDrawable="@drawable/progress_ring"
+            android:indeterminateDrawable="@drawable/progress_ring_indeterminate"
+            android:layout_gravity="bottom|end"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/online_only_badge"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_gravity="top|end"
+            android:fontFamily="@font/icons"
+            android:text="@string/icon_cloud_outlined"
+            android:textSize="18dp"
+            tools:ignore="SpUsage"
+            android:layout_marginTop="2dp"/>
+
+        <TextView
+            android:id="@+id/fileName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="22dp"
+            android:ellipsize="end"
+            android:gravity="center_horizontal"
+            android:maxLines="3"
+            android:textSize="13sp"
+            tools:text="Image.png"/>
+
+    </LinearLayout>
+</LinearLayout>

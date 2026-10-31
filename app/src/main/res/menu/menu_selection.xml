@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_select_all"
+        android:title="@string/menu_select_all" />
+    <item
+        android:id="@+id/action_availability"
+        android:title="@string/menu_make_available_offline" />
+    <item
+        android:id="@+id/action_move_to_trash"
+        android:title="@string/menu_move_to_trash" />
+    <item
+        android:id="@+id/action_restore"
+        android:title="@string/menu_restore" />
+    <item
+        android:id="@+id/action_delete_permanently"
+        android:title="@string/menu_delete_permanently" />
+</menu>

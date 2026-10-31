@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  -->
+
+<resources>
+<!--    <color name="black">#FF000000</color>-->
+<!--    <color name="white">#FFFFFFFF</color>-->
+<!--    <color name="screen_background">#FFF4F4F5</color>-->
+<!--    <color name="text_primary">#FF1C1B1F</color>-->
+<!--    <color name="text_secondary">#FF5F5E62</color>-->
+<!--    <color name="avatar_background">#FFC2185B</color>-->
+<!--    <color name="folder_blue">#FF64B5F6</color>-->
+<!--    <color name="folder_blue_dark">#FF1E88E5</color>-->
+<!--    <color name="pdf_red">#FFE53935</color>-->
+<!--    <color name="docx_blue">#FF1E88E5</color>-->
+<!--    <color name="file_page">#FFF5F5F5</color>-->
+<!--    <color name="scrim">#33000000</color>-->
+<!--    <color name="cloud_badge">#FF42A5F5</color>-->
+<!--    <color name="icon_button_ripple">#1F000000</color>-->
+</resources>

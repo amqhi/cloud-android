@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".LoginFragment">
+
+    <TextView
+        android:id="@+id/icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/icons"
+        android:text="@string/icon_door"
+        android:textSize="120dp"
+        android:layout_margin="20dp"
+        tools:ignore="SpUsage" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/login_title"
+        android:layout_margin="20dp"
+        style="@style/TextAppearance.AppCompat.Title"/>
+
+    <EditText
+        android:id="@+id/instanceUrlInput"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:hint="@string/instance_url_hint"
+        android:autofillHints=""
+        style="@style/Theme.Cloud.OutlineInput"
+        android:layout_margin="4dp"
+        android:inputType="textUri" />
+
+    <EditText
+        android:id="@+id/emailInput"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        style="@style/Theme.Cloud.OutlineInput"
+        android:autofillHints="emailAddress"
+        android:layout_margin="4dp"
+        android:hint="@string/email_hint"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/passwordInput"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:autofillHints="password"
+        android:hint="@string/password_hint"
+        style="@style/Theme.Cloud.OutlineInput"
+        android:layout_margin="4dp"
+        android:inputType="textPassword" />
+
+    <Button
+        android:id="@+id/loginButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        style="@style/Theme.Cloud.SolidButton"
+        android:layout_margin="4dp"
+        android:text="@string/sign_in" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        style="@style/Theme.Cloud.OutlineButton"
+        android:layout_margin="4dp"
+        android:text="@string/sign_up" />
+
+</LinearLayout>
