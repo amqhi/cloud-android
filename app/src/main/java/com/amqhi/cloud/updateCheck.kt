@@ -28,15 +28,15 @@ private data class LatestRelease(val versionName: String, val pageUrl: String)
 fun automaticCheckForUpdate(activity: AppCompatActivity) {
     val lastCheck = Core.cachedState.getLastUpdateCheck()
     val now = System.currentTimeMillis() / 1000
-//    if (lastCheck != 0L && now - lastCheck < CHECK_INTERVAL_SECONDS) {
-//        return
-//    }
+    if (lastCheck != 0L && now - lastCheck < CHECK_INTERVAL_SECONDS) {
+        return
+    }
 
     Thread {
         val release = fetchLatestRelease() ?: return@Thread
         Core.cachedState.updateLastUpdateCheck()
         Core.cachedState.save()
-        if (release.versionName == "0.1.0.alpha.20261031") {
+        if (release.versionName == "0.1.0-alpha.20261031") {
             return@Thread
         }
         activity.runOnUiThread {
