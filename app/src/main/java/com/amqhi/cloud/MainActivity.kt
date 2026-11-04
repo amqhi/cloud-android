@@ -692,7 +692,7 @@ class MainActivity : AppCompatActivity(), UpdateListener, FolderNavigator, FileP
 
     private fun showFilesMenu() {
         val folderId = currentFolderId()
-        val option = Core.cachedState.getSortOption(folderId)
+        val option = Core.itemManager.getFolderSortOptionById(folderId)
         val popup = PopupMenu(this, binding.gridButton, Gravity.END)
         popup.menuInflater.inflate(R.menu.menu_files, popup.menu)
         popup.menu.findItem(R.id.action_sort).subMenu?.let { applySortIndicators(it, option) }
