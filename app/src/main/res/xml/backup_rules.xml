@@ -6,5 +6,5 @@
 <full-backup-content>
     <exclude
         domain="sharedpref"
-        path="amqhi_secure_prefs.xml" />
+        path="secure_prefs.xml" />
 </full-backup-content>
