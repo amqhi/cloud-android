@@ -12,8 +12,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatDialog
-import com.amqhi.cloud.core.AppScope
-import com.amqhi.cloud.core.ItemAttributes
+import com.amqhi.shared.core.AppScope
+import com.amqhi.shared.core.ItemAttributes
 import com.amqhi.cloud.databinding.DialogEditItemBinding
 
 fun showEditItemDialog(context: Context, layoutInflater: LayoutInflater, itemAttributes: ItemAttributes, onConfirm: (itemAttributes: ItemAttributes) -> Unit) {

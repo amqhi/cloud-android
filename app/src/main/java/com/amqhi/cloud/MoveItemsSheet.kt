@@ -15,9 +15,9 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.amqhi.cloud.core.Core
-import com.amqhi.cloud.core.ItemSummary
-import com.amqhi.cloud.core.ItemType
-import com.amqhi.cloud.core.SpecialFolder
+import com.amqhi.shared.core.ItemSummary
+import com.amqhi.shared.core.ItemType
+import com.amqhi.shared.core.SpecialFolder
 import com.amqhi.cloud.databinding.SheetMoveBinding
 import java.util.UUID
 

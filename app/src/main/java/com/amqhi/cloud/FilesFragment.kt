@@ -17,10 +17,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import com.amqhi.cloud.core.Core
 import com.amqhi.cloud.core.FileProgressListener
-import com.amqhi.cloud.core.ItemAttributes
-import com.amqhi.cloud.core.ItemStatus
-import com.amqhi.cloud.core.ItemSummary
-import com.amqhi.cloud.core.ItemType
+import com.amqhi.shared.core.ItemAttributes
+import com.amqhi.shared.core.ItemStatus
+import com.amqhi.shared.core.ItemSummary
+import com.amqhi.shared.core.ItemType
 import com.amqhi.cloud.databinding.FragmentFilesBinding
 import java.io.File
 import java.nio.file.Path

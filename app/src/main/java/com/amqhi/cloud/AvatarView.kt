@@ -19,7 +19,7 @@ import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isGone
-import com.amqhi.cloud.core.User
+import com.amqhi.shared.core.User
 
 class AvatarView @JvmOverloads constructor(
     context: Context,

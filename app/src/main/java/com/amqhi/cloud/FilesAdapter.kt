@@ -18,9 +18,9 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.amqhi.cloud.core.IconType
-import com.amqhi.cloud.core.ItemStatus
-import com.amqhi.cloud.core.ItemSummary
+import com.amqhi.shared.core.IconType
+import com.amqhi.shared.core.ItemStatus
+import com.amqhi.shared.core.ItemSummary
 import com.amqhi.cloud.databinding.ItemFileBinding
 import java.util.concurrent.Executors
 import java.util.concurrent.atomic.AtomicReference

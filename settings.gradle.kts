@@ -31,3 +31,4 @@ dependencyResolutionManagement {
 rootProject.name = "Cloud"
 include(":app")
 include(":core")
+include(":shared-core")

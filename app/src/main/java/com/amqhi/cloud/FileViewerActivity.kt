@@ -39,11 +39,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.amqhi.cloud.core.Core
 import com.amqhi.cloud.core.EventCode
 import com.amqhi.cloud.core.FileProgressListener
-import com.amqhi.cloud.core.IconType
-import com.amqhi.cloud.core.Item
-import com.amqhi.cloud.core.ItemAttributes
-import com.amqhi.cloud.core.ItemStatus
-import com.amqhi.cloud.core.ItemType
+import com.amqhi.shared.core.IconType
+import com.amqhi.shared.core.Item
+import com.amqhi.shared.core.ItemAttributes
+import com.amqhi.shared.core.ItemStatus
+import com.amqhi.shared.core.ItemType
 import com.amqhi.cloud.core.UpdateListener
 import com.amqhi.cloud.databinding.ActivityFileViewerBinding
 import org.json.JSONObject

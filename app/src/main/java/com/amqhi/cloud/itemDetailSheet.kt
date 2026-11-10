@@ -12,9 +12,9 @@ import android.content.res.ColorStateList
 import android.view.LayoutInflater
 import android.view.View
 import com.google.android.material.bottomsheet.BottomSheetDialog
-import com.amqhi.cloud.core.AppScope
-import com.amqhi.cloud.core.Item
-import com.amqhi.cloud.core.ItemStatus
+import com.amqhi.shared.core.AppScope
+import com.amqhi.shared.core.Item
+import com.amqhi.shared.core.ItemStatus
 import com.amqhi.cloud.databinding.SheetItemDetailBinding
 import java.text.SimpleDateFormat
 import java.util.Locale
