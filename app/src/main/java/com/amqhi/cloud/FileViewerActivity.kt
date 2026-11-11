@@ -27,7 +27,6 @@ import android.widget.LinearLayout
 import android.widget.MediaController
 import android.widget.ScrollView
 import android.widget.TextView
-import android.widget.Toast
 import android.widget.VideoView
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
@@ -37,14 +36,14 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.amqhi.cloud.core.Core
-import com.amqhi.cloud.core.EventCode
-import com.amqhi.cloud.core.FileProgressListener
+import com.amqhi.shared.core.EventCode
+import com.amqhi.shared.core.FileProgressListener
 import com.amqhi.shared.core.IconType
 import com.amqhi.shared.core.Item
 import com.amqhi.shared.core.ItemAttributes
 import com.amqhi.shared.core.ItemStatus
 import com.amqhi.shared.core.ItemType
-import com.amqhi.cloud.core.UpdateListener
+import com.amqhi.shared.core.UpdateListener
 import com.amqhi.cloud.databinding.ActivityFileViewerBinding
 import org.json.JSONObject
 import java.io.File

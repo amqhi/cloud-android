@@ -45,8 +45,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.amqhi.shared.core.AppScope
 import com.amqhi.cloud.core.Core
-import com.amqhi.cloud.core.EventCode
-import com.amqhi.cloud.core.FileProgressListener
+import com.amqhi.shared.core.EventCode
+import com.amqhi.shared.core.FileProgressListener
 import com.amqhi.shared.core.ItemAttributes
 import com.amqhi.shared.core.ItemStatus
 import com.amqhi.cloud.core.NetworkProvider
@@ -55,7 +55,7 @@ import com.amqhi.cloud.core.PlatformUtils
 import com.amqhi.cloud.core.SecureStorageProvider
 import com.amqhi.shared.core.SortOption
 import com.amqhi.shared.core.SpecialFolder
-import com.amqhi.cloud.core.UpdateListener
+import com.amqhi.shared.core.UpdateListener
 import com.amqhi.shared.core.User
 import com.amqhi.cloud.databinding.ActivityMainBinding
 import com.amqhi.cloud.databinding.DialogConfirmBinding

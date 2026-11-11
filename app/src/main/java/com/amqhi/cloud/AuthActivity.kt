@@ -16,8 +16,8 @@ import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.FragmentTransaction
 import com.amqhi.cloud.core.Core
-import com.amqhi.cloud.core.EventCode
-import com.amqhi.cloud.core.UpdateListener
+import com.amqhi.shared.core.EventCode
+import com.amqhi.shared.core.UpdateListener
 import com.amqhi.cloud.databinding.ActivityAuthBinding
 import org.json.JSONObject
 

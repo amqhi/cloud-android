@@ -16,12 +16,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialog
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.view.ViewCompat
-import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
 import com.amqhi.cloud.core.Core
-import com.amqhi.cloud.core.EventCode
+import com.amqhi.shared.core.EventCode
 import com.amqhi.cloud.core.NavigationBarStyle
-import com.amqhi.cloud.core.UpdateListener
+import com.amqhi.shared.core.UpdateListener
 import com.amqhi.cloud.databinding.ActivitySettingsBinding
 import com.amqhi.cloud.databinding.DialogConfirmBinding
 import org.json.JSONObject
