@@ -143,7 +143,7 @@
         android:padding="4dp"
         android:elevation="6dp">
 
-        <com.amqhi.cloud.AvatarView
+        <com.amqhi.shared.ui.AvatarView
             android:id="@+id/accountButton"
             android:layout_width="30dp"
             android:layout_height="30dp"

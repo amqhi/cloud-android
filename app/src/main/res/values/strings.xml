@@ -24,7 +24,6 @@
     <string name="menu_move_to_trash">Move to trash</string>
     <string name="menu_restore">Restore</string>
     <string name="menu_delete_permanently">Delete permanently</string>
-    <string name="move_here">Move here</string>
     <string name="menu_select">Select</string>
     <string name="menu_sort">Sort</string>
     <string name="sort_name">Name</string>
@@ -49,7 +48,6 @@
     <string name="cloud_synced">Cloud synced</string>
     <string name="nav_menu">Navigation menu</string>
     <string name="account_button">Account</string>
-    <string name="item_name_hint">Name</string>
     <string name="item_name_title_folder">Folder name</string>
     <string name="item_name_title_file">File name</string>
     <string name="item_name_title_note">Note name</string>
@@ -93,12 +91,6 @@
     <string name="menu_make_available_offline">Make available offline</string>
     <string name="menu_make_online_only">Make online only</string>
     <string name="file_viewer_export_failure">Couldn\'t export this file</string>
-    <string name="app_name_notes">Notes</string>
-    <string name="app_name_music">Music</string>
-    <string name="app_name_photos">Photos</string>
-    <string name="app_name_web">Web</string>
-    <string name="app_name_ai">AI</string>
-    <string name="e2ee">End-to-End Encryption</string>
     <string name="status_available_on_offline">Available on Offline</string>
     <string name="status_online_only">Online Only</string>
     <string name="e2ee_encrypted">Encrypted</string>

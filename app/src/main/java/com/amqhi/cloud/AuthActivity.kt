@@ -44,7 +44,7 @@ class AuthActivity : AppCompatActivity(), UpdateListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppTheme.attributes = if (isDarkMode()) AppThemeAttributes.dark() else AppThemeAttributes.light()
+        applyAppTheme(if (isDarkMode()) AppThemeAttributes.dark() else AppThemeAttributes.light())
         enableEdgeToEdge()
         binding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(binding.root)

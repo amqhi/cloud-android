@@ -15,7 +15,7 @@ import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDialog
 import com.amqhi.cloud.core.Core
-import com.amqhi.cloud.databinding.DialogConfirmBinding
+import com.amqhi.shared.ui.databinding.DialogConfirmBinding
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
@@ -78,7 +78,7 @@ private fun fetchLatestRelease(): LatestRelease? {
 }
 
 private fun showUpdateDialog(activity: AppCompatActivity, pageUrl: String) {
-    val dialog = AppCompatDialog(activity, R.style.Theme_Cloud_Dialog)
+    val dialog = AppCompatDialog(activity, com.amqhi.shared.ui.R.style.Theme_Anemoneo_Dialog)
     val content = DialogConfirmBinding.inflate(activity.layoutInflater)
     content.message.setText(R.string.update_available_message)
     content.message.setTextColor(AppTheme.attributes.textColorPrimary)

@@ -45,6 +45,7 @@ import com.amqhi.shared.core.ItemStatus
 import com.amqhi.shared.core.ItemType
 import com.amqhi.shared.core.UpdateListener
 import com.amqhi.cloud.databinding.ActivityFileViewerBinding
+import com.amqhi.shared.ui.showEditItemDialog
 import org.json.JSONObject
 import java.io.File
 import java.net.HttpURLConnection
@@ -117,7 +118,7 @@ class FileViewerActivity : AppCompatActivity(), UpdateListener, FileProgressList
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppTheme.attributes = if (isDarkMode()) AppThemeAttributes.dark() else AppThemeAttributes.light()
+        applyAppTheme(if (isDarkMode()) AppThemeAttributes.dark() else AppThemeAttributes.light())
         enableEdgeToEdge()
         binding = ActivityFileViewerBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -168,7 +169,8 @@ class FileViewerActivity : AppCompatActivity(), UpdateListener, FileProgressList
                             eventAt = item.eventAt,
                             encrypted = item.encrypted,
                             appScope = item.appScope
-                        )) { attributes ->
+                        ),
+                        editItemColors()) { attributes ->
                         Core.itemManager.updateItem(item.id, attributes)
                     }
                 }

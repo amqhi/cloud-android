@@ -49,6 +49,14 @@ import com.amqhi.shared.core.EventCode
 import com.amqhi.shared.core.FileProgressListener
 import com.amqhi.shared.core.ItemAttributes
 import com.amqhi.shared.core.ItemStatus
+import com.amqhi.shared.core.ItemSummary
+import com.amqhi.shared.core.ItemType
+import com.amqhi.shared.ui.FilesFragment
+import com.amqhi.shared.ui.FilesHost
+import com.amqhi.shared.ui.MoveItemsHost
+import com.amqhi.shared.ui.MoveItemsSheet
+import com.amqhi.shared.ui.showAccountSheet
+import com.amqhi.shared.ui.showEditItemDialog
 import com.amqhi.cloud.core.NetworkProvider
 import com.amqhi.cloud.core.Notifier
 import com.amqhi.cloud.core.PlatformUtils
@@ -58,17 +66,13 @@ import com.amqhi.shared.core.SpecialFolder
 import com.amqhi.shared.core.UpdateListener
 import com.amqhi.shared.core.User
 import com.amqhi.cloud.databinding.ActivityMainBinding
-import com.amqhi.cloud.databinding.DialogConfirmBinding
-import com.amqhi.cloud.databinding.ItemAccountBinding
-import com.amqhi.cloud.databinding.ItemAddAccountBinding
-import com.amqhi.cloud.databinding.SheetAccountsBinding
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.amqhi.shared.ui.databinding.DialogConfirmBinding
 import org.json.JSONObject
 import java.io.File
 import java.util.Locale
 import java.util.UUID
 
-class MainActivity : AppCompatActivity(), UpdateListener, FolderNavigator, FileProgressListener {
+class MainActivity : AppCompatActivity(), UpdateListener, FilesHost, MoveItemsHost, FileProgressListener {
     private lateinit var binding: ActivityMainBinding
     private var syncRotation: ObjectAnimator? = null
     private var fabMenuOpen = false
@@ -84,6 +88,126 @@ class MainActivity : AppCompatActivity(), UpdateListener, FolderNavigator, FileP
 
     override val searchQuery: String
         get() = binding.searchBar.text?.toString().orEmpty()
+
+    override val folderIconBackgroundColor: Int
+        get() = AppTheme.attributes.folderIconBackgroundColor
+
+    override val folderIconFrontColor: Int
+        get() = AppTheme.attributes.folderIconFrontColor
+
+    override val surfaceColor: Int
+        get() = AppTheme.attributes.surfaceColor
+
+    override val iconButtonColor: Int
+        get() = AppTheme.attributes.iconButtonColor
+
+    override val textColorPrimary: Int
+        get() = AppTheme.attributes.textColorPrimary
+
+    override val onPrimaryColor: Int
+        get() = AppTheme.attributes.onPrimaryColor
+
+    override val primaryColor: Int
+        get() = AppTheme.attributes.primaryColor
+
+    override fun moveItems(ids: List<UUID>, sourceId: UUID, destinationId: UUID) {
+        if (ids.size == 1) {
+            Core.itemManager.moveItem(ids.first(), destinationId)
+        } else {
+            Core.itemManager.moveItems(ids, sourceId, destinationId)
+        }
+    }
+
+    override fun onMoveFinished() {
+        exitFileSelection()
+    }
+
+    override fun loadItems(folderId: UUID): List<ItemSummary> {
+        return runCatching { Core.itemManager.getItemSummaryListById(folderId) }
+            .getOrDefault(emptyList())
+    }
+
+    override fun refreshItems() {
+        Core.itemManager.refresh()
+    }
+
+    override fun openFile(item: ItemSummary) {
+        startActivity(Intent(this, FileViewerActivity::class.java).apply {
+            putExtra(FileViewerActivity.EXTRA_ITEM_ID_HIGH, item.id.mostSignificantBits)
+            putExtra(FileViewerActivity.EXTRA_ITEM_ID_LOW, item.id.leastSignificantBits)
+            putExtra(FileViewerActivity.EXTRA_ICON_TYPE, item.iconType)
+        })
+    }
+
+    override fun showItemActions(anchor: View, itemSummary: ItemSummary) {
+        val popup = PopupMenu(anchor.context, anchor, Gravity.START)
+        popup.menuInflater.inflate(R.menu.menu_item_actions, popup.menu)
+        popup.menu.findItem(R.id.action_availability).setTitle(
+            if (itemSummary.status == ItemStatus.AVAILABLE_OFFLINE) R.string.menu_make_online_only
+            else R.string.menu_make_available_offline
+        )
+        if (itemSummary.type == ItemType.FOLDER) {
+            popup.menu.findItem(R.id.action_export).isVisible = false
+            popup.menu.findItem(R.id.action_availability).isVisible = false
+        }
+        popup.setOnMenuItemClickListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.action_select -> {
+                    currentFilesFragment()?.enterSelectionMode()
+                    true
+                }
+                R.id.action_details -> {
+                    val item = Core.itemManager.getItemById(itemSummary.id)
+                    showItemDetailDialog(anchor.context, layoutInflater, item)
+                    true
+                }
+                R.id.action_edit -> {
+                    val item = Core.itemManager.getItemById(itemSummary.id)
+                    showEditItemDialog(
+                        context = layoutInflater.context,
+                        layoutInflater = layoutInflater,
+                        itemAttributes = ItemAttributes(
+                            name = item.name,
+                            eventAt = item.eventAt,
+                            parentIdHigh = item.parentId.mostSignificantBits,
+                            parentIdLow = item.parentId.leastSignificantBits,
+                            encrypted = item.encrypted,
+                            comment = item.comment,
+                            appScope = item.appScope
+                        ),
+                        colors = editItemColors(),
+                        onConfirm = { itemAttributes ->
+                            Core.itemManager.updateItem(itemSummary.id, itemAttributes)
+                        }
+                    )
+                    true
+                }
+                R.id.action_export -> {
+                    val file = File(cacheDir, File(itemSummary.name).name)
+                    Core.itemManager.downloadItem(itemSummary.id, file.absolutePath)
+                    true
+                }
+                R.id.action_availability -> {
+                    if (itemSummary.status == ItemStatus.AVAILABLE_OFFLINE) {
+                        Core.itemManager.makeItemOnlineOnly(itemSummary.id)
+                    } else {
+                        Core.itemManager.makeItemAvailableOffline(itemSummary.id)
+                    }
+                    true
+                }
+                else -> true
+            }
+        }
+        popup.show()
+    }
+
+    override fun attachTransferListener(listener: FileProgressListener) {
+        Core.networkProvider.registerFileProgressListener(listener)
+    }
+
+    override fun detachTransferListener(listener: FileProgressListener) {
+        Core.networkProvider.unregisterFileProgressListener(listener)
+    }
 
     private var tempFile: File? = null
 
@@ -187,12 +311,7 @@ class MainActivity : AppCompatActivity(), UpdateListener, FolderNavigator, FileP
         )
 
         Core.networkProvider.registerFileProgressListener(this)
-        if(isDarkMode()) {
-            AppTheme.attributes = AppThemeAttributes.dark()
-        }
-        else {
-            AppTheme.attributes = AppThemeAttributes.light()
-        }
+        applyAppTheme(if (isDarkMode()) AppThemeAttributes.dark() else AppThemeAttributes.light())
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -342,7 +461,8 @@ class MainActivity : AppCompatActivity(), UpdateListener, FolderNavigator, FileP
                     eventAt = null,
                     encrypted = false,
                     appScope = AppScope.ALL
-                )) { attributes ->
+                ),
+                editItemColors()) { attributes ->
                 Core.itemManager.createFolder(attributes)
             }
         }
@@ -352,7 +472,7 @@ class MainActivity : AppCompatActivity(), UpdateListener, FolderNavigator, FileP
             }
             selectFilesLauncher.launch("*/*")
         }
-        binding.accountButton.setOnClickListener { showAccountSheet() }
+        binding.accountButton.setOnClickListener { showAccounts() }
         bindCurrentAccount()
     }
 
@@ -361,33 +481,25 @@ class MainActivity : AppCompatActivity(), UpdateListener, FolderNavigator, FileP
         binding.accountButton.setUser(user)
     }
 
-    private fun showAccountSheet() {
-        val dialog = BottomSheetDialog(this, R.style.Theme_Cloud_BottomSheet)
-        val content = SheetAccountsBinding.inflate(layoutInflater)
-        content.background.backgroundTintList = ColorStateList.valueOf(AppTheme.attributes.surfaceColor)
-        val current = Core.getSelectedUser()
-        val currentItem = ItemAccountBinding.inflate(layoutInflater, content.accounts, true)
-        bindAccountItem(currentItem, current)
-        Core.getUnselectedUsers().forEach { user ->
-            val item = ItemAccountBinding.inflate(layoutInflater, content.accounts, true)
-            bindAccountItem(item, user)
-            item.account.setOnClickListener {
+    private fun showAccounts() {
+        showAccountSheet(
+            context = this,
+            layoutInflater = layoutInflater,
+            current = Core.getSelectedUser(),
+            others = Core.getUnselectedUsers().toList(),
+            colors = accountSheetColors(),
+            onSelect = { user ->
                 Core.switchUser(user.localId)
                 bindCurrentAccount()
                 currentFilesFragment()?.reloadItems()
-                dialog.dismiss()
-            }
-        }
-        val addAccount = ItemAddAccountBinding.inflate(layoutInflater, content.accounts, true)
-        addAccount.addAccountButton.setOnClickListener {
-            Core.addUser()
-            bindCurrentAccount()
-            showRootFolder(SpecialFolder.HOME, getString(R.string.files_title))
-            currentFilesFragment()?.reloadItems()
-            dialog.dismiss()
-        }
-        dialog.setContentView(content.root)
-        dialog.show()
+            },
+            onAdd = {
+                Core.addUser()
+                bindCurrentAccount()
+                showRootFolder(SpecialFolder.HOME, getString(R.string.files_title))
+                currentFilesFragment()?.reloadItems()
+            },
+        )
     }
 
     fun exitFileSelection() {
@@ -397,24 +509,8 @@ class MainActivity : AppCompatActivity(), UpdateListener, FolderNavigator, FileP
     private fun showMoveSheet() {
         val selected = currentFilesFragment()?.selectedItems().orEmpty()
         if (selected.isEmpty()) return
-        MoveItemsSheet.newInstance(currentFolderId(), selected)
+        MoveItemsSheet.newInstance(currentFolderId(), selected, getString(R.string.files_title))
             .show(supportFragmentManager, "move-folder")
-    }
-
-    private fun bindAccountItem(item: ItemAccountBinding, user: User, showAvatar: Boolean = true) {
-        val theme = AppTheme.attributes
-        item.email.text = user.email
-        item.email.setTextColor(theme.textColorSecondary)
-        item.nickname.text = user.name
-        item.nickname.setTextColor(theme.textColorPrimary)
-        item.avatar.isVisible = showAvatar
-        val textStart = if (showAvatar) (52 * resources.displayMetrics.density).toInt() else 0
-        listOf(item.email, item.nickname).forEach { label ->
-            label.layoutParams = (label.layoutParams as ViewGroup.MarginLayoutParams).apply {
-                marginStart = textStart
-            }
-        }
-        if (showAvatar) item.avatar.setUser(user)
     }
 
     override fun openFolder(folderId: UUID, title: String) {
@@ -574,7 +670,7 @@ class MainActivity : AppCompatActivity(), UpdateListener, FolderNavigator, FileP
     }
 
     private fun showDeleteItemsDialog() {
-        val dialog = AppCompatDialog(this, R.style.Theme_Cloud_Dialog)
+        val dialog = AppCompatDialog(this, com.amqhi.shared.ui.R.style.Theme_Anemoneo_Dialog)
         val content = DialogConfirmBinding.inflate(layoutInflater)
         val message = if (isViewingDeletedItems()) {
             R.string.delete_permanently_message

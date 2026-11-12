@@ -22,7 +22,6 @@
     <string name="menu_move_to_trash">휴지통으로 이동</string>
     <string name="menu_restore">복원</string>
     <string name="menu_delete_permanently">영구 삭제</string>
-    <string name="move_here">여기로 이동</string>
     <string name="menu_select">선택</string>
     <string name="menu_sort">정렬</string>
     <string name="sort_name">이름</string>

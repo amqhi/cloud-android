@@ -21,7 +21,7 @@ import java.util.Locale
 
 @SuppressLint("SetTextI18n")
 fun showItemDetailDialog(context: Context, layoutInflater: LayoutInflater, item: Item) {
-    val dialog = BottomSheetDialog(context, R.style.Theme_Cloud_BottomSheet)
+    val dialog = BottomSheetDialog(context, com.amqhi.shared.ui.R.style.Theme_Anemoneo_BottomSheet)
     val content = SheetItemDetailBinding.inflate(layoutInflater)
 
     val theme = AppTheme.attributes
@@ -88,31 +88,31 @@ fun showItemDetailDialog(context: Context, layoutInflater: LayoutInflater, item:
         if(appScopeString.isNotEmpty()) {
             appScopeString += ", "
         }
-        appScopeString += context.getString(R.string.app_name_notes)
+        appScopeString += context.getString(com.amqhi.shared.ui.R.string.app_name_notes)
     }
     if((appScopeInt and AppScope.MUSIC_INT) != 0) {
         if(appScopeString.isNotEmpty()) {
             appScopeString += ", "
         }
-        appScopeString += context.getString(R.string.app_name_music)
+        appScopeString += context.getString(com.amqhi.shared.ui.R.string.app_name_music)
     }
     if((appScopeInt and AppScope.PHOTOS_INT) != 0) {
         if(appScopeString.isNotEmpty()) {
             appScopeString += ", "
         }
-        appScopeString += context.getString(R.string.app_name_photos)
+        appScopeString += context.getString(com.amqhi.shared.ui.R.string.app_name_photos)
     }
     if((appScopeInt and AppScope.WEB_INT) != 0) {
         if(appScopeString.isNotEmpty()) {
             appScopeString += ", "
         }
-        appScopeString += context.getString(R.string.app_name_web)
+        appScopeString += context.getString(com.amqhi.shared.ui.R.string.app_name_web)
     }
     if((appScopeInt and AppScope.AI_INT) != 0) {
         if(appScopeString.isNotEmpty()) {
             appScopeString += ", "
         }
-        appScopeString += context.getString(R.string.app_name_ai)
+        appScopeString += context.getString(com.amqhi.shared.ui.R.string.app_name_ai)
     }
 
     content.appScopeText.text = appScopeString

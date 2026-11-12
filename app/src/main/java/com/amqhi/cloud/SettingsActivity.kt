@@ -22,7 +22,7 @@ import com.amqhi.shared.core.EventCode
 import com.amqhi.cloud.core.NavigationBarStyle
 import com.amqhi.shared.core.UpdateListener
 import com.amqhi.cloud.databinding.ActivitySettingsBinding
-import com.amqhi.cloud.databinding.DialogConfirmBinding
+import com.amqhi.shared.ui.databinding.DialogConfirmBinding
 import org.json.JSONObject
 
 class SettingsActivity : AppCompatActivity(), UpdateListener {
@@ -43,7 +43,7 @@ class SettingsActivity : AppCompatActivity(), UpdateListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        AppTheme.attributes = if (isDarkMode()) AppThemeAttributes.dark() else AppThemeAttributes.light()
+        applyAppTheme(if (isDarkMode()) AppThemeAttributes.dark() else AppThemeAttributes.light())
         enableEdgeToEdge()
         binding = ActivitySettingsBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -68,7 +68,7 @@ class SettingsActivity : AppCompatActivity(), UpdateListener {
             finish()
         }
         binding.logoutButton.setOnClickListener {
-            val dialog = AppCompatDialog(this, R.style.Theme_Cloud_Dialog)
+            val dialog = AppCompatDialog(this, com.amqhi.shared.ui.R.style.Theme_Anemoneo_Dialog)
             val content = DialogConfirmBinding.inflate(layoutInflater)
             content.message.setText(R.string.logout_message)
             content.message.setTextColor(AppTheme.attributes.textColorPrimary)

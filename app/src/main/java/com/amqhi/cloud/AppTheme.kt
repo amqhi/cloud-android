@@ -10,6 +10,9 @@ import android.content.Context
 import android.content.res.Configuration
 import android.graphics.Typeface
 import android.widget.TextView
+import com.amqhi.shared.ui.AccountSheetColors
+import com.amqhi.shared.ui.EditItemColors
+import com.amqhi.shared.ui.SheetHandle
 
 fun Context.isDarkMode(): Boolean =
     (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
@@ -18,6 +21,26 @@ fun Context.isDarkMode(): Boolean =
 object AppTheme {
     lateinit var attributes: AppThemeAttributes
 }
+
+fun applyAppTheme(attributes: AppThemeAttributes) {
+    AppTheme.attributes = attributes
+    SheetHandle.dividerColor = attributes.dividerColor
+}
+
+fun editItemColors() = EditItemColors(
+    surfaceColor = AppTheme.attributes.surfaceColor,
+    iconButtonColor = AppTheme.attributes.iconButtonColor,
+    textColorPrimary = AppTheme.attributes.textColorPrimary,
+    textColorHint = AppTheme.attributes.textColorHint,
+)
+
+fun accountSheetColors() = AccountSheetColors(
+    surfaceColor = AppTheme.attributes.surfaceColor,
+    textColorPrimary = AppTheme.attributes.textColorPrimary,
+    textColorSecondary = AppTheme.attributes.textColorSecondary,
+    avatarBackgroundColor = AppTheme.attributes.primaryColor,
+    avatarTextColor = AppTheme.attributes.onPrimaryColor,
+)
 
 data class AppThemeAttributes(
     val backgroundColor: Int,
