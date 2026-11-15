@@ -8,10 +8,7 @@
 <resources>
     <string name="icon_door" translatable="false">&#xe90e;</string>
     <string name="icon_gear" translatable="false">&#xe90f;</string>
-    <string name="icon_plus" translatable="false">&#xe90d;</string>
     <string name="icon_move" translatable="false">&#xe909;</string>
-    <string name="icon_file" translatable="false">&#xe905;</string>
-    <string name="icon_folder" translatable="false">&#xe90c;</string>
     <string name="icon_magnifying_glass" translatable="false">&#xe900;</string>
     <string name="icon_check_circle" translatable="false">&#xe902;</string>
     <string name="icon_ellipsis" translatable="false">&#xe903;</string>

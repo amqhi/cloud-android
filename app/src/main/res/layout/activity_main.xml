@@ -201,7 +201,7 @@
 
         <Button
             android:id="@+id/folderFab"
-            style="@style/Theme.Cloud.Fab"
+            style="@style/Theme.Anemoneo.Fab"
             android:contentDescription="@string/create_folder"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
@@ -230,7 +230,7 @@
 
         <Button
             android:id="@+id/fileFab"
-            style="@style/Theme.Cloud.Fab"
+            style="@style/Theme.Anemoneo.Fab"
             android:contentDescription="@string/create_file"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
@@ -241,7 +241,7 @@
 
     <Button
         android:id="@+id/mainFab"
-        style="@style/Theme.Cloud.Fab"
+        style="@style/Theme.Anemoneo.Fab"
         android:layout_gravity="bottom|end"
         android:layout_margin="16dp"
         android:contentDescription="@string/add"
