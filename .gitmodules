@@ -4,3 +4,6 @@
 [submodule "shared-core"]
 	path = shared-core
 	url = git@github.com:amqhi/shared-core-android.git
+[submodule "shared-ui"]
+	path = shared-ui
+	url = git@github.com:amqhi/shared-ui-android.git
