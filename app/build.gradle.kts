@@ -42,8 +42,8 @@ android {
         applicationId = "com.amqhi.cloud"
         minSdk = minimumSdkVersion
         targetSdk = targetSdkVersion
-        versionCode = 1
-        versionName = "0.1.0.alpha.20261031"
+        versionCode = 2
+        versionName = "0.1.0-alpha.20261115"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }

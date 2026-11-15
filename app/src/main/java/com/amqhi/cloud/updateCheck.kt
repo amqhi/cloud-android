@@ -36,7 +36,7 @@ fun automaticCheckForUpdate(activity: AppCompatActivity) {
         val release = fetchLatestRelease() ?: return@Thread
         Core.cachedState.updateLastUpdateCheck()
         Core.cachedState.save()
-        if (release.versionName == "0.1.0-alpha.20261031") {
+        if (release.versionName == "0.1.0-alpha.20261115") {
             return@Thread
         }
         activity.runOnUiThread {
